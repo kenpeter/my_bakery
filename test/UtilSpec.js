@@ -4,13 +4,15 @@ const Util = require('../Util');
 
 testName = 'test calCart';
 describe(testName, () => {
-    it(testName, async () => {
+    it(testName, () => {
         let def = getDef();
         let input = getInput();
         let util = new Util(def);
-        await util.calCart(input);
+        let res = util.calCart(input);
 
-        //expect(res).to.equal(0.44);
+        console.log(JSON.stringify(res, null, 4));
+        let num = res[0][0][0].num;
+        expect(num).to.equal(5);
     });
 });
 

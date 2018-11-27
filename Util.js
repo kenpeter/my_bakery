@@ -118,7 +118,7 @@ class Util {
         return a.num - b.num;
     }
 
-    async comSum(inputArr, target) {
+    comSum(inputArr, target) {
         // sort
         inputArr.sort(this.sortNumber);
 
@@ -126,23 +126,24 @@ class Util {
         let currArr = [];
         let nodeIndex = 0;
 
-        await this.getResult(finalArr, currArr, inputArr, target, nodeIndex);
+        this.getResult(finalArr, currArr, inputArr, target, nodeIndex);
 
         //test
         //await console.log('------- final: done one def --------');
         //await console.log(finalArr);
 
-        let outArr = await this.getOptCombo(finalArr);
+        let outArr = this.getOptCombo(finalArr);
 
-        await console.log('-- res --');
-        await console.log(outArr);
+        //await console.log('-- res --');
+        //await console.log(outArr);
 
         return outArr;
     }
 
 
-    async calCart(inputArr) {
+    calCart(inputArr) {
         // loop each order
+        let res = [];
         for(let i=0; i<inputArr.length; i++) {
             let orderObj = inputArr[i];
             let key = Object.keys(orderObj)[0];
@@ -151,12 +152,15 @@ class Util {
             // one item def
             let defSubArr = this.def[key];
 
-            await console.log(`-- key: ${key} --`);
+            //await console.log(`-- key: ${key} --`);
             //await console.log(`-- def --`);
             //await console.log(defSubArr);
 
-            await this.comSum(defSubArr, orderNum);
+            let out = this.comSum(defSubArr, orderNum);
+            res.push(out);
         }
+
+        return res;
     }
 
 

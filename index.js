@@ -58,12 +58,15 @@ function getInput() {
     return input;
 }
 
-async function main() {
+function main() {
     let def = getDef();
     let input = getInput();
     let util = new Util(def);
 
-    await util.calCart(input);
+    let out = util.calCart(input);
+
+    // output
+    console.log(JSON.stringify(out, null, 4));
 }
 
 // -- run --
