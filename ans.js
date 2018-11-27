@@ -165,12 +165,10 @@ async function main() {
         let defSubArr = def[key];
 
         await console.log(`-- key: ${key} --`);
+        await console.log(`-- def --`);
         await console.log(defSubArr);
 
-        // loop each def, in this order
-        for(let j=0; j<defSubArr.length; j++) {
-            await comSum(defSubArr, orderNum);
-        }
+        await comSum(defSubArr, orderNum);
     }
 }
 
