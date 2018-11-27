@@ -49,10 +49,21 @@ function getDef() {
     return def;
 }
 
+function getInput() {
+    let input = [
+        {VS5: 10},
+        {MB11: 14},
+        {CF: 13},
+    ];
+    return input;
+}
+
 function main() {
     let def = getDef();
+    let input = getInput();
     let util = new Util(def);
-    util.testme();
+
+    util.calCart(input);
 }
 
 // -- run --
