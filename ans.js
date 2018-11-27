@@ -1,5 +1,5 @@
 function getDef() {
-    let cart = {
+    let def = {
         VS5: [
             {
                 num: 3,
@@ -42,7 +42,7 @@ function getDef() {
         ],
     };
 
-    return cart;
+    return def;
 }
 
 function getInput() {
