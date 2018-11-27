@@ -1,5 +1,18 @@
+const expect = require('chai').expect;
+const sinon = require('sinon');
+const Util = require('../Util');
 
-var Util = require('./Util.js');
+testName = 'test calCart';
+describe(testName, () => {
+    it(testName, async () => {
+        let def = getDef();
+        let input = getInput();
+        let util = new Util(def);
+        await util.calCart(input);
+
+        //expect(res).to.equal(0.44);
+    });
+});
 
 
 function getDef() {
@@ -57,14 +70,3 @@ function getInput() {
     ];
     return input;
 }
-
-async function main() {
-    let def = getDef();
-    let input = getInput();
-    let util = new Util(def);
-
-    await util.calCart(input);
-}
-
-// -- run --
-main();

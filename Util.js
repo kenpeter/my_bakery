@@ -137,7 +137,7 @@ class Util {
         await console.log('-- res --');
         await console.log(outArr);
 
-        //return outArr;
+        return outArr;
     }
 
 

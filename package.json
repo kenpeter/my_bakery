@@ -4,8 +4,8 @@
   "description": "run: node ans.js I only have 1 test case, due to time contraint",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node index.js"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/kenpeter/my_bakery/issues"
   },
-  "homepage": "https://github.com/kenpeter/my_bakery#readme"
+  "homepage": "https://github.com/kenpeter/my_bakery#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "sinon": "^7.1.1"
+  }
 }
