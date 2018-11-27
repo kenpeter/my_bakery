@@ -103,16 +103,12 @@ function getOptCombo(arr) {
 
     // get the min pack
     let minNum = Number.MAX_SAFE_INTEGER;
-    let minIndex = 0;
+    let minIndex = -1;
     for(let i=0; i<arr.length; i++) {
         let subArr = arr[i];
         let accNum = subArr.length;
 
         if(accNum < minNum) {
-            // test
-            //console.log('-- here --');
-            //console.log(accNum);
-
             minNum = accNum;
             minIndex = i;
         } else {
@@ -121,13 +117,53 @@ function getOptCombo(arr) {
     }
 
     /*
+    // test
     console.log('-- min --');
     console.log(minNum);
-    console.log(minIndex);
     console.log(arr[minIndex]);
     */
 
+    // look for same minNum in arr
+    let compareArr = [];
+    for(let i=0; i<arr.length; i++) {
+        let subArr = arr[i];
+        let accNum = subArr.length;
+        if(accNum === minNum) {
+            compareArr.push(subArr);
+        } else {
+
+        }
+    }
+
+    if(compareArr.length > 1) {
+        let maxSum = Number.MIN_SAFE_INTEGER;
+        let maxIndex = -1;
+        for(let i=0; i<compareArr.length; i++) {
+            let tmpArr = compareArr[i];
+
+            //console.log('-- tmp arr --');
+            //console.log(tmpArr);
+
+            let tmpSum = 0;
+            for(let j=0; j<tmpArr.length; j++) {
+                let item = tmpArr[j];
+                let price = item.price;
+                tmpSum += price;
+            }
+
+            if(tmpSum > maxSum) {
+                maxSum = tmpSum;
+                maxIndex = i;
+            } else {
+
+            }
+        }
+
+        return [compareArr[maxIndex]];
+    }
+
     // get min value
+
 }
 
 async function comSum(inputArr, target) {
@@ -140,10 +176,14 @@ async function comSum(inputArr, target) {
 
     await getResult(finalArr, currArr, inputArr, target, nodeIndex);
 
-    await console.log('------- final: done one def --------');
-    await console.log(finalArr);
+    //test
+    //await console.log('------- final: done one def --------');
+    //await console.log(finalArr);
 
     let outArr = await getOptCombo(finalArr);
+
+    await console.log('-- res --');
+    await console.log(outArr);
 
     //return outArr;
 }
@@ -165,8 +205,8 @@ async function main() {
         let defSubArr = def[key];
 
         await console.log(`-- key: ${key} --`);
-        await console.log(`-- def --`);
-        await console.log(defSubArr);
+        //await console.log(`-- def --`);
+        //await console.log(defSubArr);
 
         await comSum(defSubArr, orderNum);
     }
